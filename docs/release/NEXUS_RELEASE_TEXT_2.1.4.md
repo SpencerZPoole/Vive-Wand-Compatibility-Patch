@@ -1,4 +1,4 @@
-# Vive Wand Compatibility Patch 2.1.3
+# Vive Wand Compatibility Patch 2.1.4
 
 ## Short Description
 
@@ -10,7 +10,7 @@ Unofficial HTC Vive Wand compatibility patch for Gingas' Fallout VR Essentials.
 
 This patch is specifically designed for Gingas' Fallout VR Essentials and the Vive Wand profile. It is not a general-purpose Fallout 4 VR controller overhaul.
 
-Version 2.1 introduced the scripted dialogue-menu touch-scroll bridge. Version 2.1.1 is the Dave-tested correction that keeps the bridge active across interleaved FO4VRTools left-hand callback samples. Version 2.1.2 attempted a no-EXE PowerShell installer repack. Version 2.1.3 removes all installer/script automation and uses manual setup.
+Version 2.1.4 is a packaging-only update. It keeps the Dave-tested build 213 dialogue fix and changes the release zip back to a flat MO2-friendly archive.
 
 HUGE SPECIAL THANKS TO MR. DAVE FOR PROVIDING THE VANILLA openvr_api.dll RESTORE FIX. THAT DISCOVERY IS THE HEART OF THIS PATCH, AND A VERY LARGE SHARE OF THE CREDIT FOR THIS MOD BELONGS TO HIM.
 
@@ -56,36 +56,44 @@ This patch was prepared for the Fallout 4 VR runtime 1.2.72 / F4SEVR 0.6.21 setu
 
 ## Installation
 
-1. Download the release archive.
-2. Open the zip and confirm it contains a top-level folder named:
+Recommended MO2 install:
+
+1. In Mod Organizer 2, click `Install a new mod from an archive`.
+2. Select `Vive-Wand-Compatibility-Patch-2.1.4.zip`.
+3. If MO2 asks for the mod name, use:
 
 ```text
-Vive Wand Compatibility Patch\
+Vive Wand Compatibility Patch
 ```
 
-3. Extract that whole folder into your Fallout VR Essentials mods folder. Do not extract only the loose folder contents.
+4. Enable `Vive Wand Compatibility Patch`.
+5. Put this mod lower in MO2's left pane than both `Virtual Holsters` and `Root Fix`.
 
-The final path should look like:
+Manual extraction fallback:
+
+If you do not install through MO2's archive installer, create or use this folder:
 
 ```text
 F:\Gingas Fallout VR Essentials\mods\Vive Wand Compatibility Patch\
 ```
 
-4. Open Mod Organizer 2 and enable `Vive Wand Compatibility Patch`.
-5. Put this mod lower in MO2's left pane than both `Virtual Holsters` and `Root Fix`.
-6. Find your vanilla Fallout 4 VR install folder. It is usually under:
+Then extract the loose archive contents into that folder. The installed mod folder should directly contain `README.md`, `meta.ini`, `F4SE\`, and `Root\`.
+
+OpenVR restore:
+
+1. Find your vanilla Fallout 4 VR install folder. It is usually under:
 
 ```text
 ...\Steam\steamapps\common\Fallout 4 VR\
 ```
 
-7. Copy this file from that Fallout 4 VR folder:
+2. Copy this file from that Fallout 4 VR folder:
 
 ```text
 openvr_api.dll
 ```
 
-8. Paste it into this patch mod folder:
+3. Paste it into this patch mod folder:
 
 ```text
 Vive Wand Compatibility Patch\Root\
@@ -125,7 +133,7 @@ fItemHoldDistantSpeed=3.0
 
 These settings are profile-specific. Repeat this step if you switch to or create another MO2 profile.
 
-The current 2.1.3 baseline uses:
+The current 2.1.4 baseline uses:
 
 ```ini
 [VR]
@@ -137,6 +145,8 @@ Leave that setting on auto-detect unless you are diagnosing a confirmed controll
 Launch through the MO2/F4SEVR launch option. Do not launch directly through `Fallout4VR.exe`.
 
 ## Included Files
+
+The release zip is a flat archive. Its root contains exactly:
 
 ```text
 README.md
@@ -197,18 +207,12 @@ If Workshop object rotation or held-distance movement feels wrong, repeat the MO
 - F4SEVR.
 - Virtual Holsters.
 
-## Changelog 2.1.3
+## Changelog 2.1.4
 
-- Removes all installer/script automation from the release package.
-- Replaces the attempted PowerShell installer route with manual OpenVR copy instructions.
-- Adds `Root\PUT_OPENVR_API_DLL_HERE.txt` so the OpenVR copy destination is visible after extraction.
+- Repackages the release as a flat MO2-friendly archive.
+- Removes the top-level `Vive Wand Compatibility Patch\` wrapper folder from the zip.
+- Keeps manual OpenVR copy instructions and the `Root\PUT_OPENVR_API_DLL_HERE.txt` placeholder.
 - Keeps the same build `213` dialogue-menu behavior from 2.1.1.
-
-## Changelog 2.1.2
-
-- Repackaged the release without a compiled installer EXE.
-- Replaced `Install Vanilla OpenVR for Vive Wands.exe` with the readable PowerShell installer script `Install Vanilla OpenVR for Vive Wands.ps1`.
-- Kept the same build `213` dialogue-menu behavior from 2.1.1.
 
 ## Changelog 2.1.1
 

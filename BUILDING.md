@@ -1,6 +1,6 @@
-# Building Vive Wand Compatibility Patch 2.1.3
+# Building Vive Wand Compatibility Patch 2.1.4
 
-This repository contains the source for the only compiled component in the Vive Wand Compatibility Patch 2.1.3 release:
+This repository contains the source for the only compiled component in the Vive Wand Compatibility Patch 2.1.4 release:
 
 - `F4SE\Plugins\ViveWandCompatibilityPatch.dll`
 
@@ -41,13 +41,7 @@ That generated output is ignored by git.
 
 ## Assemble the Runtime Package
 
-The Nexus release zip should contain one top-level folder:
-
-```text
-Vive Wand Compatibility Patch\
-```
-
-Inside that folder, include exactly:
+The Nexus release zip should be a flat MO2-friendly archive. The archive root should include exactly:
 
 ```text
 README.md
@@ -56,6 +50,8 @@ Root\PUT_OPENVR_API_DLL_HERE.txt
 F4SE\Plugins\VirtualHolsters.ini
 F4SE\Plugins\ViveWandCompatibilityPatch.dll
 ```
+
+Do not wrap those files in a top-level `Vive Wand Compatibility Patch\` folder.
 
 Copy the built DLL from:
 
@@ -84,9 +80,17 @@ release-packages\
 
 The release package must not redistribute Valve's `openvr_api.dll`. Users manually copy their own Fallout 4 VR `openvr_api.dll` into the installed mod's `Root` folder.
 
+MO2 should install the archive directly. If a user manually extracts instead, they should create or use:
+
+```text
+F:\Gingas Fallout VR Essentials\mods\Vive Wand Compatibility Patch\
+```
+
+and extract the loose archive contents into that folder.
+
 ## Reproducibility Note
 
-`RELEASE_MANIFEST_2.1.3.md` records the hashes of the files in the uploaded Nexus archive. A local rebuild of the F4SE DLL may produce a different binary hash depending on the MSVC toolchain version, source checkout path, and linker output details.
+`RELEASE_MANIFEST_2.1.4.md` records the hashes of the files in the uploaded Nexus archive. A local rebuild of the F4SE DLL may produce a different binary hash depending on the MSVC toolchain version, source checkout path, and linker output details.
 
 The review source and build script are intended to show exactly what code is built and how to rebuild it, not to guarantee byte-identical output on every machine.
 

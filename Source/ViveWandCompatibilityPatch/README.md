@@ -1,6 +1,6 @@
 # ViveWandCompatibilityPatch Source
 
-This folder contains the source for the small F4SE DLL shipped by Vive Wand Compatibility Patch 2.1.3.
+This folder contains the source for the small F4SE DLL shipped by Vive Wand Compatibility Patch 2.1.4.
 
 The game loads:
 
@@ -13,7 +13,7 @@ F4SE\Plugins\ViveWandCompatibilityPatch.dll
 The current installed DLL is build `213`:
 
 ```text
-SHA256: 3129C5975ACBE5BB4BA47A7D459C2A3B25A9A58F9D16844403CC1ECAA3B60502
+SHA256: 99286AF254AF9C640E511B7962E7187F0F2B1ABBC30114141445FFED4A23834D
 Size: 254976 bytes
 ```
 

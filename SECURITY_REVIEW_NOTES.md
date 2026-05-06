@@ -1,10 +1,10 @@
 # Security Review Notes
 
-This source repository is provided so Nexus Mods can review the compiled component in Vive Wand Compatibility Patch 2.1.3.
+This source repository is provided so Nexus Mods can review the compiled component in Vive Wand Compatibility Patch 2.1.4.
 
 ## Executable Components
 
-The release package contains one compiled binary component:
+The release package is a flat MO2-friendly archive and contains one compiled binary component:
 
 - `F4SE\Plugins\ViveWandCompatibilityPatch.dll`
 

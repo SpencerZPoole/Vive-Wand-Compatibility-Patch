@@ -1,4 +1,4 @@
-# Vive Wand Compatibility Patch 2.1.3
+# Vive Wand Compatibility Patch 2.1.4
 
 For Gingas' Fallout VR Essentials Mod Collection.
 
@@ -6,7 +6,7 @@ HUGE SPECIAL THANKS TO MR. DAVE FOR PROVIDING THE VANILLA openvr_api.dll RESTORE
 
 This patch restores a clean HTC Vive Wand baseline for Fallout VR Essentials while keeping the release payload small, focused, and easy to inspect.
 
-Version `2.1` introduced the scripted dialogue-menu touch-scroll bridge. Version `2.1.1` is the Dave-tested correction that keeps the bridge active across interleaved FO4VRTools left-hand callback samples. Version `2.1.2` attempted a no-EXE PowerShell installer repack. Version `2.1.3` removes all installer/script automation and uses manual setup.
+Version `2.1.4` is a packaging-only update. It keeps the Dave-tested build `213` dialogue fix and changes the release zip back to a flat MO2-friendly archive.
 
 ## What This Patch Does
 
@@ -21,37 +21,44 @@ This patch does not ship Valve's `openvr_api.dll`. You copy that file from your 
 
 ## Installation
 
-The release zip contains one top-level folder:
+Recommended MO2 install:
+
+1. In Mod Organizer 2, click `Install a new mod from an archive`.
+2. Select `Vive-Wand-Compatibility-Patch-2.1.4.zip`.
+3. If MO2 asks for the mod name, use:
 
 ```text
-Vive Wand Compatibility Patch\
+Vive Wand Compatibility Patch
 ```
 
-Extract that whole folder into the Fallout VR Essentials mods folder. Do not extract only the loose folder contents.
+4. Enable `Vive Wand Compatibility Patch`.
+5. Put this mod lower in MO2's left pane than both `Virtual Holsters` and `Root Fix`.
 
-The final path should look like:
+Manual extraction fallback:
+
+If you do not install through MO2's archive installer, create or use this folder:
 
 ```text
 F:\Gingas Fallout VR Essentials\mods\Vive Wand Compatibility Patch\
 ```
 
-Then:
+Then extract the loose archive contents into that folder. The installed mod folder should directly contain `README.md`, `meta.ini`, `F4SE\`, and `Root\`.
 
-1. Open Mod Organizer 2 and enable `Vive Wand Compatibility Patch`.
-2. Put this mod lower in MO2's left pane than both `Virtual Holsters` and `Root Fix`.
-3. Find your vanilla Fallout 4 VR install folder. It is usually under:
+OpenVR restore:
+
+1. Find your vanilla Fallout 4 VR install folder. It is usually under:
 
 ```text
 ...\Steam\steamapps\common\Fallout 4 VR\
 ```
 
-4. Copy this file from that Fallout 4 VR folder:
+2. Copy this file from that Fallout 4 VR folder:
 
 ```text
 openvr_api.dll
 ```
 
-5. Paste it into this patch mod folder:
+3. Paste it into this patch mod folder:
 
 ```text
 Vive Wand Compatibility Patch\Root\
@@ -128,7 +135,7 @@ Registered Vive Wand DialogueMenu touch-scroll bridge with FO4VRTools controller
 
 During a scripted vertical dialogue menu, right-trackpad touch-drag should move the selected response up/down, and right trigger should confirm the selected response.
 
-The current 2.1.3 baseline uses Fallout's controller auto-detect:
+The current 2.1.4 baseline uses Fallout's controller auto-detect:
 
 ```ini
 [VR]
