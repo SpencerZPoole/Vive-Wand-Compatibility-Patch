@@ -1,10 +1,12 @@
-# Building Vive Wand Compatibility Patch 2.1.2
+# Building Vive Wand Compatibility Patch 2.1.3
 
-This repository contains the source for the executable component in the Vive Wand Compatibility Patch 2.1.2 release:
+This repository contains the source for the only compiled component in the Vive Wand Compatibility Patch 2.1.3 release:
 
 - `F4SE\Plugins\ViveWandCompatibilityPatch.dll`
 
-The OpenVR installer is now shipped as the readable PowerShell script `Install Vanilla OpenVR for Vive Wands.ps1`, so there is no compiled installer EXE in the release package. Built binaries are intentionally not tracked in this source repository.
+The release package does not include an installer EXE or installer script. The OpenVR restore and Workshop INI values are manual installation steps documented in `README.md`.
+
+Built binaries are intentionally not tracked in this source repository.
 
 ## Requirements
 
@@ -13,7 +15,7 @@ The OpenVR installer is now shipped as the readable PowerShell script `Install V
 - Visual Studio 2022 Build Tools or Visual Studio 2022 Community
 - MSVC x64 C++ toolchain component: `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`
 
-Both build scripts locate `vcvars64.bat` through `vswhere.exe` first, then fall back to common Visual Studio 2022 install paths.
+The build script locates `vcvars64.bat` through `vswhere.exe` first, then falls back to common Visual Studio 2022 install paths.
 
 ## Build the F4SE DLL
 
@@ -50,7 +52,7 @@ Inside that folder, include exactly:
 ```text
 README.md
 meta.ini
-Install Vanilla OpenVR for Vive Wands.ps1
+Root\PUT_OPENVR_API_DLL_HERE.txt
 F4SE\Plugins\VirtualHolsters.ini
 F4SE\Plugins\ViveWandCompatibilityPatch.dll
 ```
@@ -65,23 +67,26 @@ Do not include:
 
 ```text
 Root\openvr_api.dll
+Root\openvr_api.backup-*.dll
 OpenVRInstall.log
 Source\
 docs\
 research\
 backups\
 release-packages\
+*.exe
+*.ps1
 *.pdb
 *.obj
 *.exp
 *.lib
 ```
 
-The release package must not redistribute Valve's `openvr_api.dll`. The installer copies the user's own Fallout 4 VR OpenVR DLL locally after installation.
+The release package must not redistribute Valve's `openvr_api.dll`. Users manually copy their own Fallout 4 VR `openvr_api.dll` into the installed mod's `Root` folder.
 
 ## Reproducibility Note
 
-`RELEASE_MANIFEST_2.1.2.md` records the hashes of the files in the uploaded Nexus archive. A local rebuild of the F4SE DLL may produce a different binary hash depending on the MSVC toolchain version, source checkout path, and linker output details.
+`RELEASE_MANIFEST_2.1.3.md` records the hashes of the files in the uploaded Nexus archive. A local rebuild of the F4SE DLL may produce a different binary hash depending on the MSVC toolchain version, source checkout path, and linker output details.
 
 The review source and build script are intended to show exactly what code is built and how to rebuild it, not to guarantee byte-identical output on every machine.
 

@@ -1,0 +1,11 @@
+Copy your own vanilla Fallout 4 VR openvr_api.dll into this Root folder.
+
+Expected final file:
+
+Root\openvr_api.dll
+
+Do not download openvr_api.dll from the internet. Use the file from your own Fallout 4 VR install folder, usually:
+
+...\Steam\steamapps\common\Fallout 4 VR\openvr_api.dll
+
+This placeholder is included only so the Root folder appears after extracting the mod.

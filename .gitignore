@@ -10,7 +10,9 @@
 *.zip
 *.log
 
-Root/
+Root/*
+!Root/
+!Root/PUT_OPENVR_API_DLL_HERE.txt
 backups/
 research/
 release-packages/

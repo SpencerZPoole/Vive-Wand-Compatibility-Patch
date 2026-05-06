@@ -1,6 +1,6 @@
 # Security Review Notes
 
-This source repository is provided so Nexus Mods can review the executable component and installer script in Vive Wand Compatibility Patch 2.1.2.
+This source repository is provided so Nexus Mods can review the compiled component in Vive Wand Compatibility Patch 2.1.3.
 
 ## Executable Components
 
@@ -10,27 +10,34 @@ The release package contains one compiled binary component:
 
 It is built from the source under `Source\`.
 
-The OpenVR installer is shipped as readable script source:
+The release package does not include:
+
+- installer EXE files
+- PowerShell installer scripts
+- Valve's `openvr_api.dll`
+- custom control maps
+- MCM files
+- ESP/ESL plugins
+
+## Manual OpenVR Restore
+
+The OpenVR restore is now a manual installation step. Users copy their own vanilla Fallout 4 VR `openvr_api.dll` into:
 
 ```text
-Install Vanilla OpenVR for Vive Wands.ps1
+Vive Wand Compatibility Patch\Root\openvr_api.dll
 ```
 
-The release package no longer includes a compiled installer EXE.
+The package includes only:
 
-## Installer Script Behavior
+```text
+Root\PUT_OPENVR_API_DLL_HERE.txt
+```
 
-`Install Vanilla OpenVR for Vive Wands.ps1` is a local PowerShell script. It is intended to be run from inside the installed MO2 mod folder.
+That placeholder makes the destination folder visible without redistributing Valve's DLL.
 
-It does:
+## Manual Workshop INI Values
 
-- locate the installed patch mod folder from the EXE path
-- locate the Fallout 4 VR install path through local Steam/registry paths or a user-selected folder
-- copy the user's own Fallout 4 VR `openvr_api.dll` into this mod's `Root\openvr_api.dll`
-- create `Root\` if needed
-- back up an existing `Root\openvr_api.dll` before replacing it
-- locate the active Mod Organizer 2 profile when possible
-- update only the active MO2 profile `fallout4custom.ini` with:
+The Workshop settings are also manual. Users open MO2's INI Editor for the active profile, select `Fallout4Custom.ini`, and set:
 
 ```ini
 [Workshop]
@@ -38,19 +45,7 @@ fItemRotationSpeed=1.0
 fItemHoldDistantSpeed=3.0
 ```
 
-It does not:
-
-- download files
-- contact the network
-- bundle or redistribute Valve's `openvr_api.dll`
-- edit `Documents\My Games\Fallout4VR\Fallout4Custom.ini`
-- modify SteamVR bindings
-- install services
-- create scheduled tasks
-- add autorun entries
-- write outside the installed mod folder and active MO2 profile path, except for standard Windows file picker interaction when the user manually selects a Fallout 4 VR folder
-
-The installer writes a local `OpenVRInstall.log` beside the script. That log is generated at runtime and is not included in the Nexus package.
+The mod does not edit `Documents\My Games\Fallout4VR\Fallout4Custom.ini` or any MO2 profile INI automatically.
 
 ## F4SE DLL Behavior
 
@@ -70,7 +65,8 @@ It does not:
 - download files
 - contact the network
 - patch SteamVR bindings
-- ship custom control maps
+- copy or move files
+- edit INI files
 - modify Pip-Boy, QuickContainer, Workshop, gameplay movement, sprint, sneak, favorites, or MCM behavior
 - redistribute third-party DLLs
 
