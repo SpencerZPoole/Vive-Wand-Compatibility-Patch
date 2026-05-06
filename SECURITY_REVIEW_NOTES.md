@@ -1,19 +1,26 @@
 # Security Review Notes
 
-This source repository is provided so Nexus Mods can review the executable components in Vive Wand Compatibility Patch 2.1.1.
+This source repository is provided so Nexus Mods can review the executable component and installer script in Vive Wand Compatibility Patch 2.1.2.
 
 ## Executable Components
 
-The release package contains two executable components:
+The release package contains one compiled binary component:
 
-- `Install Vanilla OpenVR for Vive Wands.exe`
 - `F4SE\Plugins\ViveWandCompatibilityPatch.dll`
 
-Both are built from the source under `Source\`.
+It is built from the source under `Source\`.
 
-## Installer Behavior
+The OpenVR installer is shipped as readable script source:
 
-`Install Vanilla OpenVR for Vive Wands.exe` is a local Win32 utility. It is intended to be run from inside the installed MO2 mod folder.
+```text
+Install Vanilla OpenVR for Vive Wands.ps1
+```
+
+The release package no longer includes a compiled installer EXE.
+
+## Installer Script Behavior
+
+`Install Vanilla OpenVR for Vive Wands.ps1` is a local PowerShell script. It is intended to be run from inside the installed MO2 mod folder.
 
 It does:
 
@@ -43,7 +50,7 @@ It does not:
 - add autorun entries
 - write outside the installed mod folder and active MO2 profile path, except for standard Windows file picker interaction when the user manually selects a Fallout 4 VR folder
 
-The installer writes a local `OpenVRInstall.log` beside the EXE. That log is generated at runtime and is not included in the Nexus package.
+The installer writes a local `OpenVRInstall.log` beside the script. That log is generated at runtime and is not included in the Nexus package.
 
 ## F4SE DLL Behavior
 

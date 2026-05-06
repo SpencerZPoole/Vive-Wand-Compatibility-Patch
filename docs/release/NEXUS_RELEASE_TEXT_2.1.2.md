@@ -1,4 +1,4 @@
-# Vive Wand Compatibility Patch 2.1.1
+# Vive Wand Compatibility Patch 2.1.2
 
 ## Short Description
 
@@ -10,9 +10,11 @@ Unofficial HTC Vive Wand compatibility patch for Gingas' Fallout VR Essentials.
 
 This patch is specifically designed for Gingas' Fallout VR Essentials and the Vive Wand profile. It is not a general-purpose Fallout 4 VR controller overhaul.
 
-Version 2.1.1 starts from a clean baseline: restore Fallout 4 VR's vanilla `openvr_api.dll`, keep the collection's controller auto-detect path, and add only the small fixes still needed for the current tested setup.
+Version 2.1.2 starts from a clean baseline: restore Fallout 4 VR's vanilla `openvr_api.dll`, keep the collection's controller auto-detect path, and add only the small fixes still needed for the current tested setup.
 
 Version 2.1 introduced the scripted dialogue-menu touch-scroll bridge. Version 2.1.1 is the Dave-tested correction that keeps the bridge active across interleaved FO4VRTools left-hand callback samples.
+
+Version 2.1.2 keeps the same game behavior as 2.1.1 and replaces the compiled installer EXE with a readable PowerShell installer script for easier security review.
 
 HUGE SPECIAL THANKS TO MR. DAVE FOR PROVIDING THE VANILLA openvr_api.dll RESTORE FIX. THAT DISCOVERY IS THE HEART OF THIS PATCH, AND A VERY LARGE SHARE OF THE CREDIT FOR THIS MOD BELONGS TO HIM.
 
@@ -75,10 +77,16 @@ F:\Gingas Fallout VR Essentials\mods\Vive Wand Compatibility Patch\
 
 4. Open Mod Organizer 2 and enable `Vive Wand Compatibility Patch`.
 5. Put this mod lower in MO2's left pane than both `Virtual Holsters` and `Root Fix`.
-6. Run this executable from inside the extracted `Vive Wand Compatibility Patch` folder:
+6. Run this PowerShell installer script from inside the extracted `Vive Wand Compatibility Patch` folder:
 
 ```text
-Install Vanilla OpenVR for Vive Wands.exe
+Install Vanilla OpenVR for Vive Wands.ps1
+```
+
+If Windows does not offer `Run with PowerShell`, open PowerShell in the mod folder and run:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Install Vanilla OpenVR for Vive Wands.ps1"
 ```
 
 MO2 conflict priority matters. This mod must win:
@@ -110,7 +118,7 @@ Documents\My Games\Fallout4VR\Fallout4Custom.ini
 
 If you switch to or create another MO2 profile, run the installer again while that profile is active.
 
-The current 2.1.1 baseline uses:
+The current 2.1.2 baseline uses:
 
 ```ini
 [VR]
@@ -126,7 +134,7 @@ Launch through the MO2/F4SEVR launch option. Do not launch directly through `Fal
 ```text
 README.md
 meta.ini
-Install Vanilla OpenVR for Vive Wands.exe
+Install Vanilla OpenVR for Vive Wands.ps1
 F4SE\Plugins\VirtualHolsters.ini
 F4SE\Plugins\ViveWandCompatibilityPatch.dll
 ```
@@ -138,7 +146,7 @@ The release archive intentionally does not include `Root\openvr_api.dll`; that f
 If the vanilla OpenVR restore did not apply, rerun:
 
 ```text
-Install Vanilla OpenVR for Vive Wands.exe
+Install Vanilla OpenVR for Vive Wands.ps1
 ```
 
 Then confirm this mod wins `Root\openvr_api.dll` over `Root Fix`.
@@ -181,6 +189,12 @@ If Workshop object rotation or held-distance movement feels wrong, run the insta
 - Fallout4 VR Tools / FO4VRTools.
 - F4SEVR.
 - Virtual Holsters.
+
+## Changelog 2.1.2
+
+- Repackages the release without a compiled installer EXE.
+- Replaces `Install Vanilla OpenVR for Vive Wands.exe` with the readable PowerShell installer script `Install Vanilla OpenVR for Vive Wands.ps1`.
+- Keeps the same build `213` dialogue-menu behavior from 2.1.1.
 
 ## Changelog 2.1.1
 

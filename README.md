@@ -1,4 +1,4 @@
-# Vive Wand Compatibility Patch 2.1.1
+# Vive Wand Compatibility Patch 2.1.2
 
 For Gingas' Fallout VR Essentials Mod Collection.
 
@@ -6,7 +6,7 @@ HUGE SPECIAL THANKS TO MR. DAVE FOR PROVIDING THE VANILLA openvr_api.dll RESTORE
 
 This patch restores a clean HTC Vive Wand baseline for Fallout VR Essentials while keeping the release payload small and focused.
 
-Version `2.1` introduced the scripted dialogue-menu touch-scroll bridge. Version `2.1.1` is the Dave-tested correction that keeps the bridge active across interleaved FO4VRTools left-hand callback samples.
+Version `2.1` introduced the scripted dialogue-menu touch-scroll bridge. Version `2.1.1` is the Dave-tested correction that keeps the bridge active across interleaved FO4VRTools left-hand callback samples. Version `2.1.2` keeps the same game behavior and replaces the compiled installer EXE with a readable PowerShell installer script for easier security review.
 
 ## What This Patch Does
 
@@ -39,10 +39,16 @@ Then:
 
 1. Open Mod Organizer 2 and enable `Vive Wand Compatibility Patch`.
 2. Put this mod lower in MO2's left pane than both `Virtual Holsters` and `Root Fix`.
-3. Run this executable from inside the extracted `Vive Wand Compatibility Patch` folder:
+3. Run this PowerShell installer script from inside the extracted `Vive Wand Compatibility Patch` folder:
 
 ```text
-Install Vanilla OpenVR for Vive Wands.exe
+Install Vanilla OpenVR for Vive Wands.ps1
+```
+
+If Windows does not offer `Run with PowerShell`, open PowerShell in the mod folder and run:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\Install Vanilla OpenVR for Vive Wands.ps1"
 ```
 
 MO2 conflict priority matters. This mod needs to win:
@@ -73,7 +79,7 @@ The installer intentionally does not edit `Documents\My Games\Fallout4VR\Fallout
 ```text
 README.md
 meta.ini
-Install Vanilla OpenVR for Vive Wands.exe
+Install Vanilla OpenVR for Vive Wands.ps1
 F4SE\Plugins\VirtualHolsters.ini
 F4SE\Plugins\ViveWandCompatibilityPatch.dll
 ```
@@ -103,7 +109,7 @@ Registered Vive Wand DialogueMenu touch-scroll bridge with FO4VRTools controller
 
 During a scripted vertical dialogue menu, right-trackpad touch-drag should move the selected response up/down, and right trigger should confirm the selected response.
 
-The current 2.1.1 baseline uses Fallout's controller auto-detect:
+The current 2.1.2 baseline uses Fallout's controller auto-detect:
 
 ```ini
 [VR]

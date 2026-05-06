@@ -1,11 +1,10 @@
-# Building Vive Wand Compatibility Patch 2.1.1
+# Building Vive Wand Compatibility Patch 2.1.2
 
-This repository contains the source for the two executable components in the Vive Wand Compatibility Patch 2.1.1 release:
+This repository contains the source for the executable component in the Vive Wand Compatibility Patch 2.1.2 release:
 
-- `Install Vanilla OpenVR for Vive Wands.exe`
 - `F4SE\Plugins\ViveWandCompatibilityPatch.dll`
 
-The release package itself is runtime-only. Built binaries are intentionally not tracked in this source repository.
+The OpenVR installer is now shipped as the readable PowerShell script `Install Vanilla OpenVR for Vive Wands.ps1`, so there is no compiled installer EXE in the release package. Built binaries are intentionally not tracked in this source repository.
 
 ## Requirements
 
@@ -15,29 +14,6 @@ The release package itself is runtime-only. Built binaries are intentionally not
 - MSVC x64 C++ toolchain component: `Microsoft.VisualStudio.Component.VC.Tools.x86.x64`
 
 Both build scripts locate `vcvars64.bat` through `vswhere.exe` first, then fall back to common Visual Studio 2022 install paths.
-
-## Build the Installer EXE
-
-From the repository root:
-
-```powershell
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Source\OpenVRInstaller\build.ps1 -Configuration Release
-```
-
-The script builds:
-
-```text
-Source\OpenVRInstaller\dist\Install Vanilla OpenVR for Vive Wands.exe
-```
-
-It also copies the EXE to:
-
-```text
-Source\OpenVRInstaller\package\Install Vanilla OpenVR for Vive Wands.exe
-Install Vanilla OpenVR for Vive Wands.exe
-```
-
-Those generated files are ignored by git.
 
 ## Build the F4SE DLL
 
@@ -74,15 +50,9 @@ Inside that folder, include exactly:
 ```text
 README.md
 meta.ini
-Install Vanilla OpenVR for Vive Wands.exe
+Install Vanilla OpenVR for Vive Wands.ps1
 F4SE\Plugins\VirtualHolsters.ini
 F4SE\Plugins\ViveWandCompatibilityPatch.dll
-```
-
-Copy the built EXE from:
-
-```text
-Source\OpenVRInstaller\package\Install Vanilla OpenVR for Vive Wands.exe
 ```
 
 Copy the built DLL from:
@@ -111,9 +81,9 @@ The release package must not redistribute Valve's `openvr_api.dll`. The installe
 
 ## Reproducibility Note
 
-`RELEASE_MANIFEST_2.1.1.md` records the hashes of the binaries in the uploaded Nexus archive. A local rebuild from this source may produce different binary hashes depending on the MSVC toolchain version, source checkout path, and linker output details.
+`RELEASE_MANIFEST_2.1.2.md` records the hashes of the files in the uploaded Nexus archive. A local rebuild of the F4SE DLL may produce a different binary hash depending on the MSVC toolchain version, source checkout path, and linker output details.
 
-The review source and build scripts are intended to show exactly what code is built and how to rebuild it, not to guarantee byte-identical output on every machine.
+The review source and build script are intended to show exactly what code is built and how to rebuild it, not to guarantee byte-identical output on every machine.
 
 ## Verification Commands
 

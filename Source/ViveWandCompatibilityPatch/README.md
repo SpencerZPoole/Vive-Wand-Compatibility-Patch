@@ -1,6 +1,6 @@
 # ViveWandCompatibilityPatch Source
 
-This folder contains the source for the small F4SE DLL shipped by Vive Wand Compatibility Patch 2.1.1.
+This folder contains the source for the small F4SE DLL shipped by Vive Wand Compatibility Patch 2.1.2.
 
 The game loads:
 
